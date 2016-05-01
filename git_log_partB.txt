@@ -1,0 +1,70 @@
+commit 0b0011251fe6a439913ddea4512031e16cf7a0e6
+Author: rohangowthami <90118.kanagala@students.itu.edu>
+Date:   Sat Apr 30 20:16:15 2016 -0700
+
+    deleting file2.txt
+
+diff --git a/file1.txt b/file1.txt
+index 84d1ed2..99f3a7c 100644
+--- a/file1.txt
++++ b/file1.txt
+@@ -1,2 +1,3 @@
+ sitaram software eng:
+ paradise dark knight
++white
+
+commit a998665dd46ae4c1dad89add3060b15697095a57
+Author: rohangowthami <90118.kanagala@students.itu.edu>
+Date:   Sat Apr 30 20:12:37 2016 -0700
+
+    added expected graduation and first job title
+
+diff --git a/file2.txt b/file2.txt
+new file mode 100644
+index 0000000..1fc4026
+--- /dev/null
++++ b/file2.txt
+@@ -0,0 +1 @@
++jan 2016, software dev
+
+commit 080ccbf8c55221baa8cba47e6724ef01ec1d22cb
+Author: rohangowthami <90118.kanagala@students.itu.edu>
+Date:   Fri Apr 29 01:10:44 2016 -0700
+
+    added favorite restaurent and movie
+
+diff --git a/file1.txt b/file1.txt
+index f8aca13..84d1ed2 100644
+--- a/file1.txt
++++ b/file1.txt
+@@ -1 +1,2 @@
+ sitaram software eng:
++paradise dark knight
+
+commit fd57a7c21e9c92fafbb701c6dad3eeb36812d498
+Author: rohangowthami <90118.kanagala@students.itu.edu>
+Date:   Fri Apr 29 01:08:46 2016 -0700
+
+    now has my major
+
+diff --git a/file1.txt b/file1.txt
+index e5e380a..f8aca13 100644
+--- a/file1.txt
++++ b/file1.txt
+@@ -1 +1 @@
+-sitaram90118
++sitaram software eng:
+
+commit b478e7c64a0232fe42699cd018880ceb28c4c632
+Author: rohangowthami <90118.kanagala@students.itu.edu>
+Date:   Fri Apr 29 01:04:47 2016 -0700
+
+    commiting the new file with sitaram
+
+diff --git a/file1.txt b/file1.txt
+new file mode 100644
+index 0000000..e5e380a
+--- /dev/null
++++ b/file1.txt
+@@ -0,0 +1 @@
++sitaram90118
