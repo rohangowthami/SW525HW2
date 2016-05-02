@@ -64,3 +64,10 @@ $ git checkout branch
 Switched to branch 'branch'
 
 $ git push -u origin branch
+or 
+A. $ touch h.txt
+$ vi h.txt
+$ git add h.txt
+$ git commit -m "answer for this question"
+
+$ git push -u origin master
