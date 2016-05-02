@@ -1,0 +1,66 @@
+hw5 
+ didn't ask you to do this, but suppose I asked you to make a commit on the 'other' branch. If I wanted you to push this branch, what command would 
+
+ you use?
+ Submit this homework by typing your answers to these questions in a file called hw5.txt. You should commit this on the master branch of your 
+
+ repository. Most importantly, make sure to push the master branch!
+ A. The other answers suggesting checking out the other branch, then committing to it, only work if the checkout is possible given the local 
+
+ modifications. If not, you're in the most common use case for git stash:
+
+ git stash
+ git checkout other-branch
+ git stash pop
+ The first stash hides away your changes (basically making a temporary commit), and the subsequent stash pop re-applies them. This lets git use its 
+
+ merge capabilities
+ 	
+	The other answers suggesting checking out the other branch, then committing to it, only work if the checkout is possible given the local 
+
+	modifications. If not, you're in the most common use case for git stash:
+
+	git stash
+	git checkout other-branch
+	git stash pop
+	The first stash hides away your changes (basically making a temporary commit), and the subsequent stash pop re-applies them. This lets git use its 
+
+	merge capabilities.
+
+	If when you try to pop the stash, you run into merge conflicts... the next steps depend on what those conflicts are. If all the stashed changes indeed 
+
+	belong on that other branch, you're simply going to have to sort through them - it's a consequence of having made your changes on the wrong branch.
+
+	On the other hand, if you've really messed up, and your work tree has a mix of changes for the two branches, and the conflicts are just in the ones you 
+
+	want to commit back on the original branch, you can save some work. As usual, there are a lot of ways to do this. Here's one, starting from after you 
+
+	pop and see the conflicts:
+# Unstage everything (warning: this leaves files with conflicts in your tree)
+git reset
+# Add the things you *do* want to commit here
+git add -p     # or maybe git add -i
+git commit
+# The stash still exists; pop only throws it away if it applied cleanly
+git checkout original-branch
+git stash pop
+# Add the changes meant for this branch
+git add -p 
+git commit
+# And throw away the rest
+git reset --hard
+Alternatively, if you realize ahead of the time that this is going to happen, simply commit the things that belong on the current branch. You can always 
+
+come back and amend that commit:
+
+git add -p
+git commit
+git stash
+git checkout other-branch
+git stash pop
+
+if i wanted to push maaster branch i would do like this 
+$ git checkout branch
+Switched to branch 'branch'
+
+$ git push -u origin branch
