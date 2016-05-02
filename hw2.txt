@@ -1,0 +1,74 @@
+part c : 
+1. A i have used $ git remote add origin https://github.com/rohangowthami/SW525HW2 to configure
+$ git remote show(it will show the allias name of fit remote)
+$ git fetch show (it will show fetch data)
+ and output for 
+ $ git remote -v is 
+ https://github.com/rohangowthami/SW525HW2 (fetch) 
+ https://github.com/rohangowthami/SW525HW2 (push)
+
+ What is a bare repository? What makes it different from normal repositories? In what situations is it used?
+ A  . Fixed inaccurate description of where files are stored in bare git repositories and updated explanations of both bare and no-bare repositories. the bare repository does NOT have a "working tree"
+ difference between a bare and non-bare repository is that a bare repository does not have a default remote origin repository.
+ Presumably, when it creates a bare repository, Git assumes that the bare repository will serve as the origin repository for several remote users, so it does not create the default remote origin. What this means is that basic git pull and git push operations won't work since Git assumes that without a workspace, you don't intend to commit any changes to the bare repository:
+
+ run git fetch remote name (substituting your remote name for remote name).
+
+ Did anything appear in your working directory? Why?
+
+ A.nothing new files will be appeared because we aren't fetching data from origin .  
+ Getting new branches: At the initial point of a clone you will have all the branches. However, if other developers add branches and push them to the remote there needs to be a way to 'know' about those branches and their names in order to be able to pull them down locally. This is done via a git fetch which will get all new and changed branches into the locally repository using the tracking branches (e.g. origin/). Once fetched, one can git branch --remote to list the tracking branches and git checkout [branch] to actually switch to any given one.
+
+ Update your local master branch with the remote one, and give the command you used to do so?
+ A.git fetch # This updates 'remote' portion of local repo. 
+ git reset --hard origin/<your-working-branch>
+  this will sync your local copy with remote content, discarding any committed
+   or uncommitted changes.
+
+   git branch -r
+   git branch -a
+
+
+   part e: in my view merge is the safest option.
+   A git merge should only be used for incorporating the entire feature set of branch into another one, in order to preserve a useful, semantically correct history graph. Such a clean graph has significant added value.
+   All other use cases are better off using rebase in its various incarnations: classical, three-point, interactive or cherry-picking.
+
+   Rebasing provides a moving branch point which simplifies the process of pushing changes back to the baseline. This allows you to treat an long running branch as if it were a local change. Without rebasing, branches accumulate changes from the baseline which will be included in the changes being merged back to baseline.
+
+   Merging leaves your baseline at the original branch point. If you merge a few weeks worth of changes from the line you branched off of, you now have a lot of changes from your branch point, many of which will be in your baseline. This makes makes it difficult to identify your changes in your branch. Pushing changes back to the baseline may generate conflicts unrelated to your changes. In the case of conflicts, it is possible to push inconsistent changes. Ongoing merges take effort to manage, and it is relatively easy to loose changes.
+
+   Rebase moves your branch point to the latest revision on your baseline. Any conflicts you encounter will be for your change(s) alone. Pushing changes is much simpler. Conflicts are dealt with in the local branch by doing an additional rebase. In the case of conflicting pushes, the last one to push their change will need to resolve the issue with their change.
+
+
+   In lecture, I was careful to explain the two-step procedure of using git fetch and git merge remotename/branchname to get commits from a remote. 
+
+   When would this be a good idea as opposed to simply doing git pull remotename branchname? Briefly discuss remote-tracking branches and their 
+
+   relevance in your answer.?
+   A. Merging upstream changes into your local repository is a common task in Git-based collaboration workflows. We already know how to do this with 
+
+   git fetch followed by git merge, but git pull rolls this into a single command.
+
+   Usage
+   git pull <remote>
+   Fetch the specified remote’s copy of the current branch and immediately merge it into the local copy. This is the same as git fetch <remote> followed 
+
+   by git merge origin/<current-branch>.
+
+   git pull --rebase <remote>
+   Same as the above command, but instead of using git merge to integrate the remote branch with the local one, use git rebase.
+
+
+   You can think of git pull as Git's version of svn update. It’s an easy way to synchronize your local repository with upstream changes.
+
+   Remote Tracking Branches get their contents from the git clone, git pull and git fetch commands (git merge updates only the tracking branch).
+   Remote Tracking Branches should not be modified by users (don’t set your git branch to a remote tracking branch via git checkout and then try to 
+
+   modify the remote tracking branch).
+   Remote Tracking Branches get their contents from the remote repository.
+
+   Branch type	Updated via	Published via	Client Access
+   Remote Tracking	git fetch, git pull	[Not published]	Read-only
+   Tracking	git merge, git pull (= git fetch+git merge)	git push	Read-write
+
+
